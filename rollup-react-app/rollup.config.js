@@ -1,15 +1,20 @@
-import resolve from 'rollup-plugin-node-resolve'
-import globals from 'rollup-plugin-node-globals'
 import babel from 'rollup-plugin-babel'
 import commonjs from 'rollup-plugin-commonjs'
-import { terser } from 'rollup-plugin-terser'
-import postcss from 'rollup-plugin-postcss'
+import globals from 'rollup-plugin-node-globals'
 import livereload from 'rollup-plugin-livereload'
+import postcss from 'rollup-plugin-postcss'
+import resolve from 'rollup-plugin-node-resolve'
+import serve from 'rollup-plugin-serve'
+import { uglify } from 'rollup-plugin-uglify'
+import { terser } from 'rollup-plugin-terser'
+
+// import {useState} ... function
 import react from 'react'
 import reactDom from 'react-dom'
 
 // `npm run build` -> `production` is true
 // `npm run dev` -> `production` is false
+
 const production = !process.env.ROLLUP_WATCH
 
 const babelConfig = {
@@ -23,7 +28,7 @@ export default {
 	output: {
 		file: 'public/bundle.js',
 		format: 'umd',
-		sourcemap: true
+		sourcemap: production ? false : true
 	},
 	plugins: [
 		postcss({
@@ -41,7 +46,14 @@ export default {
 			}
 		}),
 		globals(),
+		serve({
+			contentBase: ['public'],
+			host: 'localhost',
+			port: production ? 5000 : 3000,
+			open: true
+		}),
 		livereload(),
+		production && uglify(),
 		production && terser()
 	]
 }
