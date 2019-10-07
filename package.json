@@ -1,7 +1,7 @@
 {
     "name": "rollup-react-app",
     "version": "1.0.0",
-    "description": "",
+    "description": "rollup react setup",
     "scripts": {
         "build": "rollup -c",
         "watch": "rollup -c -w",
@@ -39,7 +39,8 @@
     "dependencies": {
         "react": "^16.10.2",
         "react-dom": "^16.10.2",
-        "react-scripts": "^3.2.0"
+        "react-scripts": "^3.2.0",
+        "styled-components": "^4.4.0"
     },
     "browserslist": {
         "production": [
