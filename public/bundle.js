@@ -29126,7 +29126,7 @@
               }
             }
 
-            var css = ".App{width:100%;height:300px;background-color:#faebd7}.App h2{color:#00f}.App p{font-size:20px;color:red}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9jb21wb25lbnRzL0FwcC5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUVBLEtBQ0UsVUFBVSxDQUNWLFlBQVksQ0FDWix3QkFBNkIsQ0FIL0IsUUFLSSxVQUFVLENBTGQsT0FRSSxjQUFlLENBQ2YsU0FBUyIsImZpbGUiOiJBcHAuc2NzcyJ9 */";
+            var css = "@font-face{font-family:FIVExNINEled;font-weight:400;font-style:normal;src:url(../fonts/SIGNUS_LED-R.ttf)}.App{width:100%;height:300px;background-color:#faebd7}.App h2{color:#00f}.App img{height:100px;width:100%}.App p{font-size:20px;color:red}.App .number{font-family:FIVExNINEled}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9jb21wb25lbnRzL0FwcC5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBLFdBQ0ksd0JBQTJCLENBQzNCLGVBQW1CLENBQ25CLGlCQUFrQixDQUNsQixrQ0FBcUMsQ0FFekMsS0FDSSxVQUFXLENBQ1gsWUFBYSxDQUNiLHdCQUE4QixDQUhsQyxRQUtRLFVBQVcsQ0FMbkIsU0FRUSxZQUFhLENBQ2IsVUFBVyxDQVRuQixPQVlRLGNBQWUsQ0FDZixTQUFVLENBYmxCLGFBZ0JRLHdCQUEyQiIsImZpbGUiOiJBcHAuc2NzcyJ9 */";
             styleInject(css);
 
             function App() {
@@ -29159,7 +29159,9 @@
               }, [name]);
               return react.createElement("div", {
                 className: "App"
-              }, react.createElement("p", {
+              }, react.createElement("img", {
+                src: montain
+              }), react.createElement("p", {
                 "data-testid": "countvalue"
               }, count), react.createElement("button", {
                 "data-testid": "decrementButton",
@@ -29179,7 +29181,9 @@
                 "data-testid": "submitRefButton",
                 type: "button",
                 onClick: submitRefButton
-              }, "Submit")));
+              }, "Submit")), react.createElement("h2", {
+                className: "number"
+              }, "123456789"));
             }
 
             reactDom.render(react.createElement(App, null), document.getElementById('root'));
