@@ -1,14 +1,13 @@
 {
 	"name": "rollup-react-app",
-	"version": "1.0.0",
+	"version": "0.1.0",
 	"description": "rollup react setup",
 	"scripts": {
 		"build": "rollup -c",
-		"watch": "rollup -c -w",
+		"dev": "rollup -c -w",
 		"test": "react-scripts test",
 		"start": "react-scripts start",
-		"dev": "npm-run-all --parallel start watch",
-		"clear": "taskkill /f /im node.exe && killall -9 node"
+		"clear": "taskkill /f /im node.exe || killall -9 node"
 	},
 	"peerDependencies": {
 		"react": "^16.9.0",

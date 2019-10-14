@@ -47,8 +47,6 @@ export default {
 			namedExports: {
 				react: Object.keys(react),
 				'react-dom': Object.keys(reactDom),
-				'node_modules/react/index.js': ['cloneElement', 'createContext', 'Component', 'createElement'],
-				'node_modules/react-dom/index.js': ['render', 'hydrate'],
 				'node_modules/react-is/index.js': ['isElement', 'isValidElementType', 'ForwardRef']
 			}
 		}),
