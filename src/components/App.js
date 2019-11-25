@@ -47,7 +47,8 @@ function App() {
                 </button>
             </div>
             <h2 className="number">123456789</h2>
-            <h1>Styled components</h1>
+            <h1>Img</h1>
+            <img></img>
         </div>
     )
 }
