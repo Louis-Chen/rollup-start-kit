@@ -13,74 +13,66 @@ import postcss from 'rollup-plugin-postcss'
 import atImport from 'postcss-import'
 import postcssPresetEnv from 'postcss-preset-env'
 
-const babelConfig = {
-	babelrc: false,
-	presets: ['@babel/env', '@babel/preset-react'],
-	exclude: 'node_modules/**',
-	extensions: ['.ts', '.tsx', '.js', '.jsx', '.json']
-}
 export default {
-	input: 'src/index.js',
-	output: {
-		file: 'public/bundle.js',
-		format: 'umd',
-		sourcemap: false
-	},
-	plugins: [
-		replace({
-			'process.env.NODE_ENV': JSON.stringify('production')
-		}),
-		babel(babelConfig),
-		resolve(),
-		postcss({
-			extract: true,
-			plugins: [
-				atImport({}),
-				postcssPresetEnv({
-					stage: 3,
-					features: {
-						'nesting-rules': true
-					}
-				})
-			],
-			minimize: true,
-			sourceMap: 'inline'
-		}),
-		commonjs({
-			include: 'node_modules/**',
-			namedExports: {
-			  'node_modules/react/index.js': [
-				'Component',
-				'PureComponent',
-				'Fragment',
-				'Children',
-				'createElement',
-				'useContext',
-				'useEffect',
-				'useLayoutEffect',
-				'useMemo',
-				'useReducer',
-				'useRef',
-				'useState'
-			  ],
-			  'node_modules/react-dom/index.js': [
-				'unstable_batchedUpdates'
-			  ],
-			  'node_modules/react-is/index.js': [
-				'isContextConsumer',
-				'isValidElementType'
-			  ]
-			}
-		  }),
-		serve({
-			contentBase: ['public'],
-			host: 'localhost',
-			port: 3000,
-			open: true
-		}),
-		filesize(),
-		livereload(),
-		uglify(),
-		terser()
-	]
+    input: 'src/index.js',
+    output: {
+        file: 'public/bundle.js',
+        format: 'umd',
+        sourcemap: false,
+    },
+    plugins: [
+        replace({
+            'process.env.NODE_ENV': JSON.stringify('production'),
+        }),
+        babel(),
+        resolve(),
+        postcss({
+            extract: true,
+            plugins: [
+                atImport({}),
+                postcssPresetEnv({
+                    stage: 3,
+                    features: {
+                        'nesting-rules': true,
+                    },
+                }),
+            ],
+            minimize: true,
+            sourceMap: 'inline',
+        }),
+        commonjs({
+            include: 'node_modules/**',
+            namedExports: {
+                'node_modules/react/index.js': [
+                    'Component',
+                    'PureComponent',
+                    'Fragment',
+                    'Children',
+                    'createElement',
+                    'useContext',
+                    'useEffect',
+                    'useLayoutEffect',
+                    'useMemo',
+                    'useReducer',
+                    'useRef',
+                    'useState',
+                ],
+                'node_modules/react-dom/index.js': ['unstable_batchedUpdates'],
+                'node_modules/react-is/index.js': [
+                    'isContextConsumer',
+                    'isValidElementType',
+                ],
+            },
+        }),
+        serve({
+            contentBase: ['public'],
+            host: 'localhost',
+            port: 3000,
+            open: true,
+        }),
+        filesize(),
+        livereload(),
+        uglify(),
+        terser(),
+    ],
 }

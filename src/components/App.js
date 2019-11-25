@@ -3,7 +3,7 @@ import './App.scss'
 function App() {
     let [count, setCount] = useState(0)
     let [name, setName] = useState(
-        window.localStorage.getItem('name') || 'Brian'
+        window.localStorage.getItem('name') || 'Brian',
     )
 
     let nameRef = useRef()
@@ -18,36 +18,35 @@ function App() {
     }, [name])
 
     return (
-        <div className='App'>
-
-            <p data-testid='countvalue'>{count}</p>
+        <div className="App">
+            <p data-testid="countvalue">{count}</p>
             <button
-                data-testid='decrementButton'
-                type='button'
+                data-testid="decrementButton"
+                type="button"
                 onClick={decrement}
             >
                 -
             </button>
             <button
-                data-testid='incrementButton'
-                type='button'
+                data-testid="incrementButton"
+                type="button"
                 onClick={increment}
             >
                 +
             </button>
             <div>
                 <h2>Testing useRef</h2>
-                <p data-testid='nameValue'>{name}</p>
-                <input data-testid='inputName' ref={nameRef} type='text' />
+                <p data-testid="nameValue">{name}</p>
+                <input data-testid="inputName" ref={nameRef} type="text" />
                 <button
-                    data-testid='submitRefButton'
-                    type='button'
+                    data-testid="submitRefButton"
+                    type="button"
                     onClick={submitRefButton}
                 >
                     Submit
                 </button>
             </div>
-            <h2 className='number'>123456789</h2>
+            <h2 className="number">123456789</h2>
             <h1>Styled components</h1>
         </div>
     )
