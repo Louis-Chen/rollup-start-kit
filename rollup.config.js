@@ -1,7 +1,6 @@
 import babel from 'rollup-plugin-babel'
-import builtins from 'rollup-plugin-node-builtins'
 import commonjs from 'rollup-plugin-commonjs'
-import globals from 'rollup-plugin-node-globals'
+import replace from 'rollup-plugin-replace'
 import resolve from 'rollup-plugin-node-resolve'
 
 import filesize from 'rollup-plugin-filesize'
@@ -13,15 +12,6 @@ import { terser } from 'rollup-plugin-terser'
 import postcss from 'rollup-plugin-postcss'
 import atImport from 'postcss-import'
 import postcssPresetEnv from 'postcss-preset-env'
-
-// import { useState } ... function
-import react from 'react'
-import reactDom from 'react-dom'
-
-// `npm run build` -> `production` is true
-// `npm run dev` -> `production` is false
-
-const production = !process.env.ROLLUP_WATCH
 
 const babelConfig = {
 	babelrc: false,
@@ -37,6 +27,11 @@ export default {
 		sourcemap: false
 	},
 	plugins: [
+		replace({
+			'process.env.NODE_ENV': JSON.stringify('production')
+		}),
+		babel(babelConfig),
+		resolve(),
 		postcss({
 			extract: true,
 			plugins: [
@@ -51,21 +46,36 @@ export default {
 			minimize: true,
 			sourceMap: 'inline'
 		}),
-		builtins(),
-		resolve(),
-		babel(babelConfig),
 		commonjs({
 			include: 'node_modules/**',
 			namedExports: {
-				react: Object.keys(react),
-				'react-dom': Object.keys(reactDom)
+			  'node_modules/react/index.js': [
+				'Component',
+				'PureComponent',
+				'Fragment',
+				'Children',
+				'createElement',
+				'useContext',
+				'useEffect',
+				'useLayoutEffect',
+				'useMemo',
+				'useReducer',
+				'useRef',
+				'useState'
+			  ],
+			  'node_modules/react-dom/index.js': [
+				'unstable_batchedUpdates'
+			  ],
+			  'node_modules/react-is/index.js': [
+				'isContextConsumer',
+				'isValidElementType'
+			  ]
 			}
-		}),
-		globals(),
+		  }),
 		serve({
 			contentBase: ['public'],
 			host: 'localhost',
-			port: production ? 5000 : 3000,
+			port: 3000,
 			open: true
 		}),
 		filesize(),
