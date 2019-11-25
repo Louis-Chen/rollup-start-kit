@@ -1,7 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react'
-import mING from '../assets/app.jpg'
 import './App.scss'
-import * as S from './Styled'
 function App() {
     let [count, setCount] = useState(0)
     let [name, setName] = useState(
@@ -21,7 +19,7 @@ function App() {
 
     return (
         <div className='App'>
-            <img src={mING}></img>
+
             <p data-testid='countvalue'>{count}</p>
             <button
                 data-testid='decrementButton'
@@ -51,9 +49,6 @@ function App() {
             </div>
             <h2 className='number'>123456789</h2>
             <h1>Styled components</h1>
-            <S.Bg>
-                asdf
-            </S.Bg>
         </div>
     )
 }
