@@ -3,11 +3,9 @@ import commonjs from 'rollup-plugin-commonjs'
 import replace from 'rollup-plugin-replace'
 import resolve from 'rollup-plugin-node-resolve'
 
+import browsersync from 'rollup-plugin-browsersync'
 import filesize from 'rollup-plugin-filesize'
-import livereload from 'rollup-plugin-livereload'
-import serve from 'rollup-plugin-serve'
 import { uglify } from 'rollup-plugin-uglify'
-import { terser } from 'rollup-plugin-terser'
 
 import postcss from 'rollup-plugin-postcss'
 import atImport from 'postcss-import'
@@ -49,6 +47,7 @@ export default {
                     'Fragment',
                     'Children',
                     'createElement',
+                    'useCallback',
                     'useContext',
                     'useEffect',
                     'useLayoutEffect',
@@ -64,15 +63,8 @@ export default {
                 ],
             },
         }),
-        serve({
-            contentBase: ['public'],
-            host: 'localhost',
-            port: 3000,
-            open: true,
-        }),
         filesize(),
-        livereload(),
+        browsersync({ server: 'public' }),
         uglify(),
-        terser(),
     ],
 }

@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react'
-import './App.scss'
+
 function App() {
     let [count, setCount] = useState(0)
     let [name, setName] = useState(
