@@ -7,10 +7,6 @@ import browsersync from 'rollup-plugin-browsersync'
 import filesize from 'rollup-plugin-filesize'
 import { uglify } from 'rollup-plugin-uglify'
 
-import postcss from 'rollup-plugin-postcss'
-import atImport from 'postcss-import'
-import postcssPresetEnv from 'postcss-preset-env'
-
 export default {
     input: 'src/index.js',
     output: {
@@ -24,20 +20,6 @@ export default {
         }),
         babel(),
         resolve(),
-        postcss({
-            extract: true,
-            plugins: [
-                atImport({}),
-                postcssPresetEnv({
-                    stage: 3,
-                    features: {
-                        'nesting-rules': true,
-                    },
-                }),
-            ],
-            minimize: true,
-            sourceMap: 'inline',
-        }),
         commonjs({
             include: 'node_modules/**',
             namedExports: {
@@ -47,6 +29,8 @@ export default {
                     'Fragment',
                     'Children',
                     'createElement',
+                    'createContext',
+                    'forwardRef',
                     'useCallback',
                     'useContext',
                     'useEffect',
