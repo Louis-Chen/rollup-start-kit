@@ -1,4 +1,8 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import App from './components/App'
-ReactDOM.render(<App></App>, document.getElementById('root'))
+import App from './App'
+
+export const init = state => {
+    console.log(state)
+    ReactDOM.render(<App></App>, document.getElementById('root'))
+}

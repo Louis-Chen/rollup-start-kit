@@ -1,13 +1,215 @@
 <!DOCTYPE html>
 <html>
-	<head lang="en">
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width" />
-		<title>rollup-react-app</title>
-		<link rel="stylesheet" type="text/css" href="bundle.css">
-	</head>
-	<body>
-		<div id="root"></div>
-		<script src="bundle.js"></script>
-	</body>
+    <head lang="en">
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width" />
+        <title>rollup-react-app</title>
+    </head>
+    <body>
+        <div id="root"></div>
+        <script src="bundle.js"></script>
+        <script>
+            const uuid = () => {
+                let dt = new Date().getTime()
+                let uuid = 'xxxxxxxxx'.replace(/[xy]/g, function(c) {
+                    let r = (dt + Math.random() * 16) % 16 | 0
+                    dt = Math.floor(dt / 16)
+                    return (c == 'x' ? r : (r & 0x3) | 0x8).toString(16)
+                })
+                return uuid
+            }
+            const player = {
+                lang: 'en-US',
+                name: 'Tomy Lo',
+                amount: 100000,
+            }
+            const section = [
+                {
+                    id: 'funny',
+                    name: 'Funny Games',
+                    item: [
+                        {
+                            name: 'Crimson Siren',
+                        },
+                        {
+                            name: 'Infected Rising',
+                        },
+                        {
+                            name: 'Breakout of Vengeance',
+                        },
+                        {
+                            name: 'Strategize of Invasion',
+                        },
+                    ],
+                },
+                {
+                    id: 'other',
+                    name: 'Other Games',
+                    items: [
+                        { name: 'Secrets and Time' },
+                        {
+                            name: 'Breakout of Vengeance',
+                        },
+                        {
+                            name: 'Strategize of Invasion',
+                        },
+                    ],
+                },
+            ]
+            const games = [
+                {
+                    id: uuid(),
+                    name: 'Crimson Siren',
+                    price: '200',
+                    currency: '$',
+                    isFavorite: false,
+                    provider: 'Treutel Inc',
+                    section: 'funny',
+                },
+                {
+                    id: uuid(),
+                    name: 'Infected Rising',
+                    price: '100',
+                    currency: '$',
+                    isFavorite: false,
+                    provider: 'Treutel Inc',
+                },
+                {
+                    id: uuid(),
+                    name: 'Breakout of Vengeance',
+                    price: '400',
+                    currency: '$',
+                    isFavorite: false,
+                    provider: 'Treutel Inc',
+                },
+                {
+                    id: uuid(),
+                    name: 'Strategize of Invasion',
+                    price: '140',
+                    currency: '$',
+                    isFavorite: false,
+                },
+                {
+                    id: uuid(),
+                    name: 'Revival and Year',
+                    price: '250',
+                    currency: '$',
+                    isFavorite: false,
+                    provider: 'Zulauf-Wilkinson',
+                },
+                {
+                    id: uuid(),
+                    name: 'Marks Reynolds',
+                    price: '100',
+                    currency: '$',
+                    isFavorite: false,
+                    provider: 'Zulauf-Wilkinson',
+                },
+                {
+                    id: uuid(),
+                    name: 'Secrets and Time',
+                    price: '310',
+                    currency: '$',
+                    isFavorite: false,
+                    provider: 'Zulauf-Wilkinson',
+                },
+                {
+                    id: uuid(),
+                    name: 'Ruecker and Nikolaus',
+                    price: '120',
+                    currency: '$',
+                    isFavorite: false,
+                    provider: 'Zulauf-Wilkinson',
+                },
+
+                {
+                    id: uuid(),
+                    name: 'Alterrain',
+                    price: '220',
+                    currency: '$',
+                    isFavorite: false,
+                    provider: 'Zulauf-Wilkinson',
+                },
+                {
+                    id: uuid(),
+                    name: 'Kuhic',
+                    price: '220',
+                    currency: '$',
+                    isFavorite: false,
+                    provider: 'Fahey Ltd',
+                },
+                {
+                    id: uuid(),
+                    name: 'Altersky',
+                    price: '340',
+                    currency: '$',
+                    isFavorite: false,
+                    provider: 'Fahey Ltd',
+                },
+                {
+                    id: uuid(),
+                    name: 'Dreamscape',
+                    price: '190',
+                    currency: '$',
+                    isFavorite: false,
+                    provider: 'Fahey Ltd',
+                },
+                {
+                    id: uuid(),
+                    name: 'Bloodblast',
+                    price: '233',
+                    currency: '$',
+                    isFavorite: false,
+                    provider: 'Marks-Reynolds',
+                },
+                {
+                    id: uuid(),
+                    name: 'Cold Barrage',
+                    price: '130',
+                    currency: '$',
+                    isFavorite: false,
+                    provider: 'Marks-Reynolds',
+                },
+                {
+                    id: uuid(),
+                    name: 'Angel Edge',
+                    price: '222',
+                    currency: '$',
+                    isFavorite: false,
+                    provider: 'Rau-Stark',
+                },
+                {
+                    id: uuid(),
+                    name: 'Infected Rising',
+                    price: '100',
+                    currency: '$',
+                    isFavorite: false,
+                    provider: 'Rau-Stark',
+                },
+                {
+                    id: uuid(),
+                    name: 'Madrush',
+                    price: '200',
+                    currency: '$',
+                    isFavorite: false,
+                    provider: 'Rau-Stark',
+                },
+                {
+                    id: uuid(),
+                    name: 'Endorzone',
+                    price: '100',
+                    currency: '$',
+                    isFavorite: false,
+                    provider: 'Rau-Stark',
+                },
+            ]
+
+            const state = {
+                player,
+                games,
+                section
+            }
+            reactApp.init(state)
+        </script>
+    </body>
 </html>

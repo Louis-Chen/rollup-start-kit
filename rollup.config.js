@@ -12,7 +12,8 @@ export default {
     output: {
         file: 'public/bundle.js',
         format: 'umd',
-        sourcemap: false,
+        name:'reactApp',
+        sourcemap: true,
     },
     plugins: [
         replace({
