@@ -1,7 +1,7 @@
 import { createContext } from "react";
 
 
-const PlayerContext = createContext()
+const PlayerContext = createContext({state:{},dispatch:null})
 
 
 

@@ -6,10 +6,16 @@ import { FavoriteContext } from './context/favorite'
 
 export const Provider = ({ value, children }) => {
     return (
-        <PlayerContext.Provider value={value.player}>
-            <GamesContext.Provider value={value.games}>
-                <SectionContext.Provider value={value.section}>
-                    <FavoriteContext.Provider value={value.favorite}>
+        <PlayerContext.Provider value={{ state: value.player, dispatch: null }}>
+            <GamesContext.Provider
+                value={{ state: value.games, dispatch: null }}
+            >
+                <SectionContext.Provider
+                    value={{ state: value.section, dispatch: null }}
+                >
+                    <FavoriteContext.Provider
+                        value={{ state: value.favorite, dispatch: null }}
+                    >
                         {children}
                     </FavoriteContext.Provider>
                 </SectionContext.Provider>
