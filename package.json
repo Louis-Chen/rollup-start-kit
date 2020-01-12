@@ -1,61 +1,32 @@
 {
-    "name": "rollup-react-app",
-    "version": "0.1.0",
-    "description": "rollup react setup",
-    "jest": {
-        "moduleNameMapper": {
-            "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/__mocks__/fileMock.js",
-            "\\.(css|less|sass|scss)$": "identity-obj-proxy"
-        }
-    },
-    "scripts": {
-        "build": "rollup -c",
-        "dev": "rollup -c -w",
-        "test": "jest",
-        "clear": "taskkill /f /im node.exe || killall -9 node"
-    },
-    "peerDependencies": {
-        "react": "^16.9.0",
-        "react-dom": "^16.9.0"
-    },
-    "devDependencies": {
-        "@babel/core": "^7.6.2",
-        "@babel/preset-env": "^7.6.2",
-        "@babel/preset-react": "^7.0.0",
-        "@testing-library/react": "^9.4.0",
-        "identity-obj-proxy": "^3.0.0",
-        "node-sass": "^4.12.0",
-        "rollup": "^1.23.1",
-        "rollup-plugin-babel": "^4.3.3",
-        "rollup-plugin-browsersync": "^1.1.0",
-        "rollup-plugin-commonjs": "^10.1.0",
-        "rollup-plugin-filesize": "^6.2.0",
-        "rollup-plugin-node-builtins": "^2.1.2",
-        "rollup-plugin-node-globals": "^1.4.0",
-        "rollup-plugin-node-resolve": "^5.2.0",
-        "rollup-plugin-postcss": "^2.0.3",
-        "rollup-plugin-replace": "^2.2.0",
-        "rollup-plugin-terser": "^5.0.0",
-        "rollup-plugin-uglify": "^6.0.3"
-    },
-    "dependencies": {
-        "@emotion/core": "^10.0.27",
-        "@emotion/styled": "^10.0.27",
-        "emotion": "^10.0.27",
-        "react": "^16.10.2",
-        "react-dom": "^16.10.2",
-        "react-scripts": "^3.2.0"
-    },
-    "browserslist": {
-        "production": [
-            ">0.2%",
-            "not dead",
-            "not op_mini all"
-        ],
-        "development": [
-            "last 1 chrome version",
-            "last 1 firefox version",
-            "last 1 safari version"
-        ]
-    }
+	"name": "rollup-start-kit",
+	"version": "1.0.0",
+	"description": "rollup react kit",
+	"bin": {
+		"create-rollup-react": "./bin/index.js"
+	},
+	"scripts": {
+		"clean": "npx rimraf node_modules example",
+		"format": "npx prettier --write **/*.js",
+		"format:check": "npx prettier --list-different **/*.js",
+		"create": "npm i && ./bin/index.js example",
+		"test": "npm run clean && npm run create && cd example && npm run build && CI=1 npm test",
+		"check": "npm run format:check && npm test",
+		"release": "./pre-flight-tests && npm run check && git tag $npm_package_version && git push && git push --tags && npm publish"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/Louis-Chen/rollup-start-kit.git"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/Louis-Chen/rollup-start-kit/issues"
+	},
+	"homepage": "https://github.com/Louis-Chen/rollup-start-kit#readme",
+	"dependencies": {
+		"colorette": "=1.1.0",
+		"fs-extra": "=8.1.0"
+	}
 }
