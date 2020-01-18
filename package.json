@@ -1,6 +1,6 @@
 {
 	"name": "rollup-start-kit",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"description": "rollup react kit",
 	"bin": {
 		"create-rollup-react": "./bin/index.js"
